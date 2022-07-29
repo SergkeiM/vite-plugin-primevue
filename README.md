@@ -6,7 +6,7 @@ Very simple Vite plugin for automatic imports of [PrimeVue](https://github.com/p
 ## Automatic imports
 ```js
 // vite.config.js
-import primevue from 'vite-plugin-prime'
+import primevue from 'prime-vite-plugin'
 
 plugins: [
   vue(),
