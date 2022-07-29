@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es2019",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "esModuleInterop": false,
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "strict": true,
+        "sourceMap": true,
+        "types": [
+            "node"
+        ],
+        "lib": ["ESNext"]
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
