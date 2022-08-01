@@ -4,8 +4,7 @@
   "description": "Very simple Vite plugin for automatic imports of PrimeVue",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --outdir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --outdir dist"
   },
   "repository": {
     "type": "git",
@@ -25,8 +24,11 @@
   "files": [
     "dist/"
   ],
-  "devDependencies": {
-    "path": "^0.12.7",
-    "vue": "^3.2.37"
+  "engines": {
+    "node": ">=12"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0",
+    "primevue": "^3.15.0"
   }
 }

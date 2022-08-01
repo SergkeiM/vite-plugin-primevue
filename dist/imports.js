@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateImports = exports.parseId = void 0;
 const vue_1 = require("vue");
 const url_1 = require("url");
+const importMap = require("./map.json");
 function createSet(matches) {
     return new Set(Array.from(matches, i => {
         return {
             symbol: i[1],
-            component: (0, vue_1.camelize)(i[2]).substr(1).toLowerCase(),
-            name: (0, vue_1.capitalize)((0, vue_1.camelize)(i[2])),
+            name: (0, vue_1.camelize)(i[2]).toLowerCase(),
             index: i.index,
             length: i[0].length,
         };
@@ -26,13 +26,14 @@ function getImports(source, options) {
     const imports = new Map();
     if (components.size) {
         components.forEach(component => {
-            if (component.name.startsWith('V') || component.name.startsWith('P')) {
+            if (component.name in importMap) {
                 resolvedComponents.push(component);
             }
         });
     }
     resolvedComponents.forEach(component => {
-        addImport(imports, component.name, component.symbol, `primevue/${component.component}`);
+        const src = options.sfc ? `${importMap[component.name]}/sfc` : importMap[component.name];
+        addImport(imports, component.name, component.symbol, src);
     });
     return {
         imports,

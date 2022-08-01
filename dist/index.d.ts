@@ -1,4 +1,4 @@
-declare function importPlugin(): {
+declare function importPlugin(_options?: {}): {
     name: string;
     configResolved(config: any): void;
     transform(code: any, id: any): Promise<{

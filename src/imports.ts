@@ -1,12 +1,12 @@
-import { camelize, capitalize } from 'vue'
+import { camelize } from 'vue'
 import { parse as parseUrl, URLSearchParams } from 'url'
+import * as importMap from './map.json'
 
 function createSet (matches){
     return new Set(Array.from(matches, i => {
         return {
             symbol: i[1],
-            component: camelize(i[2]).substr(1).toLowerCase(),
-            name: capitalize(camelize(i[2])),
+            name: camelize(i[2]).toLowerCase(),
             index: i.index,
             length: i[0].length,
         }
@@ -28,17 +28,19 @@ function getImports (source, options) {
 
     if (components.size) {
         components.forEach(component => {
-            if (component.name.startsWith('V') || component.name.startsWith('P')) {
+            if (component.name in importMap) {
                 resolvedComponents.push(component)
             }
         })
     }
 
     resolvedComponents.forEach(component => {
-        addImport(imports, component.name, component.symbol, `primevue/${component.component}`)
+
+        const src = options.sfc ? `${importMap[component.name]}/sfc`: importMap[component.name]
+
+        addImport(imports, component.name, component.symbol, src)
     })
-
-
+    
     return {
         imports,
         components: resolvedComponents

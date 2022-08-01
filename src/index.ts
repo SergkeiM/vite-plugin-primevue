@@ -1,7 +1,12 @@
 import { extname } from 'path'
 import { parseId, generateImports } from './imports'
 
-function importPlugin (){
+function importPlugin (_options = {}){
+
+    const options = {
+        sfc: false,
+        ..._options
+    }
 
     return {
         name: 'primevue:import',
@@ -17,7 +22,7 @@ function importPlugin (){
                 (!query && extname(path) === '.vue' && !/^import { render as _sfc_render } from ".*"$/m.test(code)) ||
                     (query && 'vue' in query && (query.type === 'template' || (query.type === 'script' && query.setup === 'true')))
                 ){
-                    const { code: imports, source } = generateImports(code)
+                    const { code: imports, source } = generateImports(code, options)
 
                     return {
                         code: imports + source,
