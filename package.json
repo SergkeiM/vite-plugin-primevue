@@ -1,6 +1,6 @@
 {
-  "name": "prime-vite-plugin",
-  "version": "1.1.0",
+  "name": "primevue-vite-plugin",
+  "version": "1.0.0",
   "description": "Very simple Vite plugin for automatic imports of PrimeVue",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Froxz/prime-vite-plugin.git"
+    "url": "git+https://github.com/Froxz/primevue-vite-plugin.git"
   },
   "keywords": [
     "primevue",
@@ -18,9 +18,9 @@
   "author": "Froxz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Froxz/prime-vite-plugin/issues"
+    "url": "https://github.com/Froxz/primevue-vite-plugin/issues"
   },
-  "homepage": "https://github.com/Froxz/prime-vite-plugin#readme",
+  "homepage": "https://github.com/Froxz/primevue-vite-plugin#readme",
   "files": [
     "dist/"
   ],
