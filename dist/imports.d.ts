@@ -1,10 +1,20 @@
-export declare function parseId(id: any): {
-    query: {
-        [k: string]: any;
-    } | null;
-    path: any;
+import { VitePrimeViewPluginOptions } from './types';
+export declare type ComponentListJson = {
+    [index: string]: any;
 };
-export declare function generateImports(source: any, options: any): {
+export declare type ComponentItem = {
+    symbol: string;
+    name: string;
+    index: number | undefined;
+    length: number;
+};
+export declare function parseId(id: string): {
+    query: {
+        [k: string]: string;
+    } | null;
+    path: string;
+};
+export declare function generateImports(source: string, options: VitePrimeViewPluginOptions): {
     code: string;
-    source: any;
+    source: string;
 };

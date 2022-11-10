@@ -4,8 +4,9 @@ exports.generateImports = exports.parseId = void 0;
 const vue_1 = require("vue");
 const url_1 = require("url");
 const importMap = require("./map.json");
+let importMapList = importMap;
 function createSet(matches) {
-    return new Set(Array.from(matches, i => {
+    return new Set(Array.from(matches, (i) => {
         return {
             symbol: i[1],
             name: (0, vue_1.camelize)(i[2]).toLowerCase(),
@@ -15,10 +16,11 @@ function createSet(matches) {
     }));
 }
 function addImport(imports, name, as, from) {
+    var _a;
     if (!imports.has(from)) {
         imports.set(from, []);
     }
-    imports.get(from).push(`default as ${as}`);
+    (_a = imports.get(from)) === null || _a === void 0 ? void 0 : _a.push(`default as ${as}`);
 }
 function getImports(source, options) {
     const { components } = parseTemplate(source);
@@ -32,7 +34,7 @@ function getImports(source, options) {
         });
     }
     resolvedComponents.forEach(component => {
-        const src = options.sfc ? `${importMap[component.name]}/sfc` : importMap[component.name];
+        const src = options.sfc ? `${importMapList[component.name]}/sfc` : importMapList[component.name];
         addImport(imports, component.name, component.symbol, src);
     });
     return {
@@ -65,7 +67,8 @@ function generateImports(source, options) {
         });
         code += '\n';
         source = components.reduce((acc, v) => {
-            return acc.slice(0, v.index) + ' '.repeat(v.length) + acc.slice(v.index + v.length);
+            var _a;
+            return acc.slice(0, v.index) + ' '.repeat(v.length) + acc.slice(((_a = v.index) !== null && _a !== void 0 ? _a : 0) + v.length);
         }, source);
     }
     return { code, source };

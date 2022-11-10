@@ -1,5 +1,6 @@
 import { extname } from 'path'
 import { parseId, generateImports } from './imports'
+import { ResolvedConfig } from 'vite'
 
 function importPlugin (_options = {}){
 
@@ -10,12 +11,12 @@ function importPlugin (_options = {}){
 
     return {
         name: 'primevue:import',
-        configResolved (config) {
-            if (config.plugins.indexOf(this) < config.plugins.findIndex(plugin => plugin.name === 'vite:vue')) {
+        configResolved (config: ResolvedConfig) {
+            if (config.plugins.findIndex(plugin => plugin.name === 'primevue:import') < config.plugins.findIndex(plugin => plugin.name === 'vite:vue')) {
                 throw new Error('PrimeVue plugin must be loaded after the vue plugin')
             }
         },
-        async transform (code, id) {
+        async transform (code: string, id: string) {
             const { query, path } = parseId(id)
 
             if (
