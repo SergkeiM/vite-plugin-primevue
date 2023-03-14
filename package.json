@@ -1,6 +1,6 @@
 {
   "name": "@froxz/vite-plugin-primevue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Very simple Vite plugin for automatic imports of PrimeVue",
   "main": "dist/index.js",
   "scripts": {
