@@ -6,5 +6,5 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-## Added
+### Added
 - Release
