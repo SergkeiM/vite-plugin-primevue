@@ -1,11 +1,11 @@
-# primevue-vite-plugin
+# vite-plugin-primevue
 
 Very simple Vite plugin for automatic imports of [PrimeVue](https://github.com/primefaces/primevue/). Ported from [vite-plugin-vuetify](https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin) that was created by [@KaelWD](https://github.com/KaelWD)
 
 ## Automatic imports
 ```js
 // vite.config.js
-import primevue from 'primevue-vite-plugin'
+import primevue from '@froxz/vite-plugin-primevue'
 
 plugins: [
   vue(),
@@ -17,7 +17,7 @@ plugins: [
 
 ```js
 // vite.config.js
-import primevue from 'primevue-vite-plugin'
+import primevue from '@froxz/vite-plugin-primevue'
 
 plugins: [
   vue(),
